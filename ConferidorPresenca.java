@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class ConferidorPresenca {
 	
     static final int NUMERO_DE_ALUNOS = 34; // Número total de alunos
@@ -47,6 +49,7 @@ public class ConferidorPresenca {
 	};
 	
 	public static void main(String[] args) {
+		
 		// escaneia o input linha a linha
         Scanner scanner = new Scanner(System.in);
         // pede o input para o usuário
@@ -86,10 +89,19 @@ public class ConferidorPresenca {
             System.out.println(aluno);
         }
 
-        System.out.println("\n\n" + ausentes.size() + " alunos ausentes:");
-        for (String aluno : ausentes) {
-            System.out.println(aluno);
-        }
+//        System.out.println("\n\n" + ausentes.size() + " alunos ausentes:");
+//        for (String aluno : ausentes) {
+//            System.out.println(aluno);
+//        }
+        // mostra os ausentes na tela
+		StringBuilder message = new StringBuilder();
+		message.append(ausentes.size()).append(" alunos ausentes:\n");
+		for (String aluno : ausentes) {
+		    message.append(aluno).append("\n");
+		}
+
+        
+        JOptionPane.showMessageDialog(null, message.toString(), "Alunos Ausentes", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static boolean conferirSeAlunoEstaPresente(String aluno, String historico) {
